@@ -1,14 +1,12 @@
-<center><img src="https://www.myinstants.com/media/apple-touch-icon-114x114.png" alt="MyInstants"></center>
-    
-# MyInstants REST API
+<p align="center"><img src="https://www.myinstants.com/media/apple-touch-icon-114x114.png" alt="MyInstants"></p>
+<h1 align="center">MyInstants REST API</h1>
+<p align="center">A RESTful API for scraping and retrieving sound data from the <a href="https://www.myinstants.com" target="_blank">MyInstants</a> website. This API provides endpoints for retrieving information about sounds, including titles, URLs, descriptions, tags, favorites, views, and uploader details.</p>
 
-A RESTful API for scraping and retrieving sound data from the [MyInstants](https://www.myinstants.com) website. This API provides endpoints for retrieving information about sounds, including titles, URLs, descriptions, tags, favorites, views, and uploader details.
-
-## Support
+## ✨ Support
 
 If you like this project, please star on this repository, thank you ⭐<br>
 You can support me by:<br>
-<a href="https://trakteer.id/abdipr" target="_blank"><img id="wse-buttons-preview" src="https://cdn.trakteer.id/images/embed/trbtn-red-1.png?date=18-11-2023" height="30" style="border: 0px; height: 30px;" alt="Trakteer Saya"></a>
+<a href="https://trakteer.id/abdipr" target="_blank"><img id="wse-buttons-preview" src="https://cdn.trakteer.id/images/embed/trbtn-red-1.png?date=18-11-2023" height="50" style="border: 0px; height: 30px;" alt="Trakteer Saya"></a>
 
 ## Table of Contents
 
@@ -16,7 +14,7 @@ You can support me by:<br>
     - [Introduction](#introduction)
     - [Requirements](#requirements)
     - [Installation](#installation)
-- [Reference](#-reference)
+- [Reference](#%EF%B8%8F-reference)
     - [Endpoints](#endpoints)
     - [Request Parameters](#request-parameters)
     - [Response Parameters](#response-parameters)
