@@ -1,41 +1,47 @@
+<center><img src="https://www.myinstants.com/media/apple-touch-icon-114x114.png" alt="MyInstants"></center>
+    
 # MyInstants REST API
 
 A RESTful API for scraping and retrieving sound data from the [MyInstants](https://www.myinstants.com) website. This API provides endpoints for retrieving information about sounds, including titles, URLs, descriptions, tags, favorites, views, and uploader details.
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Requirements](#requirements)
-- [Installation](#installation)
+- [Getting Started](#getting-started)
+    - [Introduction](#introduction)
+    - [Requirements](#requirements)
+    - [Installation](#installation)
 - [Endpoints](#endpoints)
 - [Error Handling](#error-handling)
 - [Examples](#examples)
 - [Contributing](#contributing)
 - [License](#license)
 
----
+## 🚀 Getting Started
 
-## Introduction
+### Introduction
 
 The MyInstants REST API is designed to provide a structured way to retrieve sound data from the MyInstants website. This API is suitable for applications that need to access sound information dynamically without direct interactions with the MyInstants site.
 
-## Requirements
+### Requirements
 
 - PHP 7.4 or higher
 - [simple_html_dom.php](https://simplehtmldom.sourceforge.io/) library for HTML parsing
 - Internet access for scraping the MyInstants website
 
-## Installation
+### Installation
 
 1. Clone the repository to your server:
     ```bash
-    git clone https://github.com/yourusername/myinstants-api.git
+    git clone https://github.com/abdipr/myinstants-api.git
     cd myinstants-api
     ```
 
 2. Download and include `simple_html_dom.php` in the project directory.
 
 3. Set up your server to serve PHP files (e.g., Apache or Nginx).
+
+4. Or, you can deploy directly to Vercel here<br>
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fabdipr%2Fmyinstants-api%2F&redirect-url=https%3A%2F%2Fgithub.com%2Fabdipr%2Fmyinstants-api%2F)
 
 ## Endpoints
 
@@ -44,7 +50,7 @@ The MyInstants REST API is designed to provide a structured way to retrieve soun
 | `GET /trending`                    | Trending based region     |     q     |
 | `GET /search`                      | Search a sound            |     q     |
 | `GET /detail`                      | The sound details         |     id    |
-| `GET /recent`                      | Recently uploaded sounds |           |
+| `GET /recent`                      | Recently uploaded sounds  |           |
 | `GET /best`                        | Best of all time sounds   |           |
 | `GET /uploaded`                    | User's uploaded sounds    |  username |
 | `GET /favorites`                   | User's favorite sounds    |  username |
