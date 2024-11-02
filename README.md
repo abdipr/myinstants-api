@@ -6,7 +6,7 @@ A RESTful API for scraping and retrieving sound data from the [MyInstants](https
 
 ## Support
 
-If you like this project, please star on this repository, thank you ⭐
+If you like this project, please star on this repository, thank you ⭐<br>
 You can support me by:<br>
 <a href="https://trakteer.id/abdipr" target="_blank"><img id="wse-buttons-preview" src="https://cdn.trakteer.id/images/embed/trbtn-red-1.png?date=18-11-2023" height="30" style="border: 0px; height: 30px;" alt="Trakteer Saya"></a>
 
@@ -23,8 +23,8 @@ You can support me by:<br>
 - [Error Handling](#-error-handling)
 - [Examples](#-examples)
 - [Contributing](#-contributing)
-- [License](#-license)
-- [Disclaimer](#-disclaimer)
+- [License](#%EF%B8%8F-license)
+- [Disclaimer](#%EF%B8%8F-disclaimer)
 
 ## 🚀 Getting Started
 
@@ -56,6 +56,7 @@ The MyInstants REST API is designed to provide a structured way to retrieve soun
 ## ❇️ Reference
 
 ### Endpoints
+Base URL: https://myinstants-api.vercel.app
 
 | Request                            | Response                  | Parameter |
 | :--------------------------------- | :------------------------ | :-------: |
@@ -131,7 +132,7 @@ Contributions are welcome! To contribute:
 
 This project is licensed under the `MIT License`. See the [LICENSE](https://github.com/abdipr/myinstants-api/blob/main/LICENSE) file for more information.
 
-## ⚠️ Disclamer
+## ⚠️ Disclaimer
 
 The sounds contained in this API are obtained from the original [MyInstants](https://www.myinstants.com) website by web scraping. Developers using this API must follow the applicable regulations by mentioning this project or the official owner in their projects and are prohibited from abusing this API for personal benefits.
 
