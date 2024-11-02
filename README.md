@@ -44,7 +44,7 @@ The MyInstants REST API is designed to provide a structured way to retrieve soun
 | `GET /trending`                    | Trending based region     |     q     |
 | `GET /search`                      | Search a sound            |     q     |
 | `GET /detail`                      | The sound details         |     id    |
-| `GET /recent`                      | Recenntly uploaded sounds |           |
+| `GET /recent`                      | Recently uploaded sounds |           |
 | `GET /best`                        | Best of all time sounds   |           |
 | `GET /uploaded`                    | User's uploaded sounds    |  username |
 | `GET /favorites`                   | User's favorite sounds    |  username |
