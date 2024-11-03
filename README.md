@@ -69,7 +69,7 @@ Base URL: https://myinstants-api.vercel.app
 ### Request Parameters
 | Parameter | Description             |
 | :-------: | :---------------------- |
-|     `q`   | Query                   |
+|     `q`   | Search query or region  |
 | `username`| User's username         |
 |    `id`   | Sound's Unique ID       |
 
@@ -102,19 +102,59 @@ All errors return JSON objects with a `status` code and `message` explaining the
   
 ## 🌐 Examples
 
-### Example 1: Get Sound by ID
+### Example 1: Get Trending Sounds by Region
 
-Retrieve details of a sound using its ID:
+Retrieve trending sounds based on a specified region:
 ```http
-GET /sound?id=akh-26815
+GET https://myinstants-api.vercel.app/trending?q=id
 ```
 
 ### Example 2: Search Sounds by Query
 
-Search for sounds using a specific query string:
+Search for sounds using a specific keyword:
 ```http
-GET /search?q=laugh
+GET https://myinstants-api.vercel.app/search?q=laugh
 ```
+
+### Example 3: Get Sound Details by ID
+
+Retrieve the details of a sound using its unique ID:
+```http
+GET https://myinstants-api.vercel.app/detail?id=akh-26815
+```
+
+### Example 4: Get Recently Uploaded Sounds
+
+Retrieve a list of the most recently uploaded sounds:
+```http
+GET https://myinstants-api.vercel.app/recent
+```
+
+### Example 5: Get Best of All Time Sounds
+
+Retrieve a list of the most popular sounds of all time:
+```http
+GET https://myinstants-api.vercel.app/best
+```
+
+### Example 6: Get User’s Uploaded Sounds
+
+Retrieve all sounds uploaded by a specific user:
+```http
+GET https://myinstants-api.vercel.app/uploaded?username=hellmouz
+```
+
+### Example 7: Get User's Favorite Sounds
+
+Retrieve a list of sounds favorited by a specific user:
+```http
+GET https://myinstants-api.vercel.app/favorites?username=hellmouz
+```
+
+### Notes
+- **`q` Parameter**: Used for searching or specifying the region for trending sounds.
+- **`id` Parameter**: Unique identifier for accessing sound details.
+- **`username` Parameter**: User's profile name for accessing their uploads or favorites.
 
 ## 🌱 Contributing
 
