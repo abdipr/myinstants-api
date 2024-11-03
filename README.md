@@ -20,6 +20,13 @@ You can support me by:<br>
     - [Response Parameters](#response-parameters)
 - [Error Handling](#-error-handling)
 - [Examples](#-examples)
+    - [Example 1: Trending](#example-1-get-trending-sounds-by-region)
+    - [Example 2: Search](#example-2-search-sounds-by-query)
+    - [Example 3: Detail](#example-3-get-sound-details-by-id)
+    - [Example 4: Recent](#example-4-get-recently-uploaded-sounds)
+    - [Example 5: Best of All Time](#example-5-get-best-of-all-time-sounds)
+    - [Example 6: Uploaded](#example-6-get-users-uploaded-sounds)
+    - [Example 7: Favorites](#example-7-get-users-favorite-sounds)
 - [Contributing](#-contributing)
 - [License](#%EF%B8%8F-license)
 - [Disclaimer](#%EF%B8%8F-disclaimer)
@@ -137,7 +144,7 @@ Retrieve a list of the most popular sounds of all time:
 GET https://myinstants-api.vercel.app/best
 ```
 
-### Example 6: Get User’s Uploaded Sounds
+### Example 6: Get User's Uploaded Sounds
 
 Retrieve all sounds uploaded by a specific user:
 ```http
