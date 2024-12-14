@@ -35,7 +35,7 @@ if (!$html) {
         }
     }
 
-    $result = str_replace("/\",", "\",", str_replace("\"/en/instant/", "", str_replace("\\", "", json_encode([
+    $result = str_replace("/\",", "\",", str_replace("\"/en/instant/", "\"", str_replace("\\", "", json_encode([
         "status" => "200",
         "author" => "abdiputranar",
         "data" => $sounds
