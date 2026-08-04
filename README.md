@@ -188,6 +188,16 @@ You can support me by:<br>
 <a href="https://saweria.co/abdipr" target="_blank"><img height="42" src="https://files.catbox.moe/fwpsve.png"></a>
 <a href="https://www.buymeacoffee.com/abdipr" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: auto !important;" ></a>
 
+### Star History
+
+<a href="https://www.star-history.com/?repos=abdipr%2Fmyinstants-api&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=abdipr/myinstants-api&type=date&theme=dark&legend=top-left&sealed_token=d8-oCRjEm0gdKE6IHODgty_02DfU0SBhQ6-JKph5qyufokc7Yl6jjX-xxl8ppYXzquxu-yC7c-dDkalFs2CDpDfStsFDUb6p_cw_vtxA-iUwKFWg1adHgQ" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=abdipr/myinstants-api&type=date&legend=top-left&sealed_token=d8-oCRjEm0gdKE6IHODgty_02DfU0SBhQ6-JKph5qyufokc7Yl6jjX-xxl8ppYXzquxu-yC7c-dDkalFs2CDpDfStsFDUb6p_cw_vtxA-iUwKFWg1adHgQ" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=abdipr/myinstants-api&type=date&legend=top-left&sealed_token=d8-oCRjEm0gdKE6IHODgty_02DfU0SBhQ6-JKph5qyufokc7Yl6jjX-xxl8ppYXzquxu-yC7c-dDkalFs2CDpDfStsFDUb6p_cw_vtxA-iUwKFWg1adHgQ" />
+ </picture>
+</a>
+
 ## ⚖️ License
 
 This project is licensed under the `MIT License`. See the [LICENSE](https://github.com/abdipr/myinstants-api/blob/main/LICENSE) file for more information.
