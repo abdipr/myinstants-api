@@ -1,6 +1,10 @@
 <?php
 require_once "simple_html_dom.php";
 
+// Never leak warnings/deprecations into JSON responses.
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+ini_set('display_errors', '0');
+
 function fetch_html($url) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -237,9 +241,9 @@ function fetch_mp3_durations($urls) {
         }
         $map[$url] = $duration;
         curl_multi_remove_handle($mh, $ch);
-        curl_close($ch);
+        // Note: curl_close() / curl_multi_close() intentionally omitted —
+        // deprecated since PHP 8.5 (no-ops since PHP 8.0, handles auto-freed).
     }
-    curl_multi_close($mh);
     return $map;
 }
 
