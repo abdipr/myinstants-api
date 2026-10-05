@@ -75,21 +75,29 @@ URL Base: https://myinstants-api.vercel.app
 
 | Petición          | Respuesta                 | Parámetro  |
 | :--------------- | :----------------------- | :--------: |
-| `GET /trending`  | Tendencias por región    |    `q`     |
-| `GET /search`    | Buscar un sonido         |    `q`     |
+| `GET /trending`  | Tendencias por región    | `q`, `page` |
+| `GET /search`    | Buscar un sonido         | `q`, `page` |
 | `GET /detail`    | Detalles del sonido      |    `id`    |
-| `GET /recent`    | Sonidos subidos recientemente |            |
-| `GET /best`      | Mejores sonidos de todos los tiempos |    `q`     |
-| `GET /uploaded`  | Sonidos subidos por el usuario | `username` |
-| `GET /favorites` | Sonidos favoritos del usuario | `username` |
+| `GET /recent`    | Sonidos subidos recientemente |   `page`   |
+| `GET /best`      | Mejores sonidos de todos los tiempos | `q`, `page` |
+| `GET /uploaded`  | Sonidos subidos por el usuario | `username`, `page` |
+| `GET /favorites` | Sonidos favoritos del usuario | `username`, `page` |
+
+_Todos los endpoints de lista (`/trending`, `/search`, `/recent`, `/best`, `/uploaded`, `/favorites`) admiten paginación con `?page=N` (refleja `https://www.myinstants.com/en/index/sy/?page=4`, por defecto `1`) y filtrado por duración con `?with_duration=1&min_duration=2&max_duration=6`._
 
 ### Parámetros de Solicitud
 
-| Parámetro  | Descripción            |
-| :--------: | :--------------------- |
-|    `q`     | Consulta de búsqueda o región |
-| `username` | Nombre de usuario        |
-|    `id`    | ID Único del sonido      |
+|   Parámetro    | Descripción                                              |
+| :------------: | :------------------------------------------------------- |
+|      `q`       | Consulta de búsqueda o región                            |
+|   `username`   | Nombre de usuario                                        |
+|      `id`      | ID Único del sonido                                      |
+|     `page`     | Número de página (>= 1, por defecto `1`). Ejemplo: `?page=4` |
+| `with_duration`| `1` para incluir la `duration` (segundos) del MP3        |
+| `min_duration` | Solo sonidos de >= N segundos (implica `with_duration`)  |
+| `max_duration` | Solo sonidos de <= N segundos (implica `with_duration`)  |
+
+_Nota: `myinstants.com` no expone duraciones en su HTML, por lo que `with_duration` / `min_duration` / `max_duration` analizan cada MP3 (cabeceras de tramas MPEG). Las listas son rápidas por defecto; solo son más lentas (descarga en paralelo, mejor esfuerzo, `duration: null` si no se detecta) cuando se usan estos parámetros._
 
 ### Ejemplo de Respuesta
 
@@ -99,18 +107,25 @@ Una respuesta exitosa típica (HTTP 200) devolverá un objeto JSON como este:
 {
   "status": 200,
   "author": "abdipr",
+  "page": 4,
+  "count": 30,
+  "total_pages": 50,
+  "has_next": true,
   "data": [
     {
       "id": "vine-boom-sound-70972",
       "title": "VINE BOOM SOUND",
       "url": "https://www.myinstants.com/en/instant/vine-boom-sound-70972/",
-      "mp3": "https://www.myinstants.com/media/sounds/vine-boom.mp3"
+      "mp3": "https://www.myinstants.com/media/sounds/vine-boom.mp3",
+      "duration": 1.42
     }
   ]
 }
 ```
 
-_Nota: Para el endpoint `/detail`, el objeto `data` contendrá campos adicionales como `description`, `tags`, `favorites`, `views` y `uploader`._
+_`page` / `count` / `total_pages` / `has_next` los devuelven todos los endpoints de lista (`total_pages` se extrae del título original `Page X of Y`, `null` si no se detecta). `duration` (segundos) solo aparece con `with_duration=1` o `min_duration` / `max_duration`._
+
+_Nota: Para el endpoint `/detail`, el objeto `data` contendrá campos adicionales como `description`, `tags`, `favorites`, `views` y `uploader` (más `duration` con `?with_duration=1`)._
 
 ## 💥 Manejo de Errores
 
@@ -170,6 +185,24 @@ GET https://myinstants-api.vercel.app/uploaded?username=hellmouz
 
 ```http
 GET https://myinstants-api.vercel.app/favorites?username=hellmouz
+```
+
+### Ejemplo 8: Paginar cualquier lista (p. ej. tendencias Siria, página 4)
+
+Refleja https://www.myinstants.com/en/index/sy/?page=4 — la página 1 es el valor por defecto:
+
+```http
+GET https://myinstants-api.vercel.app/trending?q=sy&page=4
+GET https://myinstants-api.vercel.app/search?q=laugh&page=2
+GET https://myinstants-api.vercel.app/recent?page=2
+```
+
+### Ejemplo 9: Solo sonidos de 2–6 segundos
+
+```http
+GET https://myinstants-api.vercel.app/search?q=laugh&min_duration=2&max_duration=6
+GET https://myinstants-api.vercel.app/trending?q=sy&page=4&min_duration=2&max_duration=6
+GET https://myinstants-api.vercel.app/search?q=laugh&with_duration=1
 ```
 
 ## 🌱 Contribuir

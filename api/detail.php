@@ -25,11 +25,12 @@ $uploaderUrl = $web . $authorElement->find("a", 0)->href;
 $viewsText = trim(str_replace("views", "", $authorElement->plaintext));
 $views = trim(str_replace("Uploaded by " . $uploader . " - ", "", $viewsText));
 
-output_json([
+$mp3 = $web . $soundUrl;
+$data = [
     "id" => $id,
     "url" => "https://www.myinstants.com/en/instant/$id",
     "title" => $title,
-    "mp3" => $web . $soundUrl,
+    "mp3" => $mp3,
     "description" => $description,
     "tags" => $tags,
     "favorites" => $favorites,
@@ -38,5 +39,13 @@ output_json([
         "username" => $uploader,
         "url" => $uploaderUrl
     ]
-]);
+];
+
+list($with_duration, $_min, $_max) = get_duration_params();
+if ($with_duration) {
+    $durations = fetch_mp3_durations([$mp3]);
+    $data["duration"] = $durations[$mp3] ?? null;
+}
+
+output_json($data);
 ?>

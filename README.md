@@ -73,21 +73,29 @@ Base URL: https://myinstants-api.vercel.app
 
 | Request          | Response                 | Parameter  |
 | :--------------- | :----------------------- | :--------: |
-| `GET /trending`  | Trending based region    |    `q`     |
-| `GET /search`    | Search a sound           |    `q`     |
+| `GET /trending`  | Trending based region    | `q`, `page` |
+| `GET /search`    | Search a sound           | `q`, `page` |
 | `GET /detail`    | The sound details        |    `id`    |
-| `GET /recent`    | Recently uploaded sounds |            |
-| `GET /best`      | Best of all time sounds  |    `q`     |
-| `GET /uploaded`  | User's uploaded sounds   | `username` |
-| `GET /favorites` | User's favorite sounds   | `username` |
+| `GET /recent`    | Recently uploaded sounds |   `page`   |
+| `GET /best`      | Best of all time sounds  | `q`, `page` |
+| `GET /uploaded`  | User's uploaded sounds   | `username`, `page` |
+| `GET /favorites` | User's favorite sounds   | `username`, `page` |
+
+_All list endpoints (`/trending`, `/search`, `/recent`, `/best`, `/uploaded`, `/favorites`) support pagination via `?page=N` (mirrors `https://www.myinstants.com/en/index/sy/?page=4`, default `1`) and duration probing via `?with_duration=1&min_duration=2&max_duration=6`._
 
 ### Request Parameters
 
-| Parameter  | Description            |
-| :--------: | :--------------------- |
-|    `q`     | Search query or region |
-| `username` | User's username        |
-|    `id`    | Sound's Unique ID      |
+|   Parameter    | Description                                              |
+| :------------: | :------------------------------------------------------- |
+|      `q`       | Search query or region                                   |
+|   `username`   | User's username                                          |
+|      `id`      | Sound's Unique ID                                        |
+|     `page`     | Page number (>= 1, default `1`). Example: `?page=4`      |
+| `with_duration`| `1` to include MP3 `duration` (seconds) per sound        |
+| `min_duration` | Only keep sounds >= N seconds (implies `with_duration`)  |
+| `max_duration` | Only keep sounds <= N seconds (implies `with_duration`)  |
+
+_Note: `myinstants.com` exposes no durations in its HTML, so `with_duration` / `min_duration` / `max_duration` probe each MP3 and parse the MPEG frame headers. Lists stay fast by default; responses are slower (parallel fetch, best-effort, `duration: null` when undetectable) only when duration params are used._
 
 ### Response Example
 
@@ -97,18 +105,25 @@ A typical successful response (HTTP 200) will return a JSON object like this:
 {
   "status": 200,
   "author": "abdipr",
+  "page": 4,
+  "count": 30,
+  "total_pages": 50,
+  "has_next": true,
   "data": [
     {
       "id": "vine-boom-sound-70972",
       "title": "VINE BOOM SOUND",
       "url": "https://www.myinstants.com/en/instant/vine-boom-sound-70972/",
-      "mp3": "https://www.myinstants.com/media/sounds/vine-boom.mp3"
+      "mp3": "https://www.myinstants.com/media/sounds/vine-boom.mp3",
+      "duration": 1.42
     }
   ]
 }
 ```
 
-_Note: For the `/detail` endpoint, the `data` object will contain extra fields like `description`, `tags`, `favorites`, `views`, and `uploader`._
+_`page` / `count` / `total_pages` / `has_next` are returned by all list endpoints (`total_pages` is parsed from the upstream `Page X of Y` title, `null` when undetectable). `duration` (seconds) only appears when `with_duration=1` or `min_duration` / `max_duration` is used._
+
+_Note: For the `/detail` endpoint, the `data` object will contain extra fields like `description`, `tags`, `favorites`, `views`, and `uploader` (plus `duration` when `?with_duration=1` is passed)._
 
 ## 💥 Error Handling
 
@@ -168,6 +183,24 @@ GET https://myinstants-api.vercel.app/uploaded?username=hellmouz
 
 ```http
 GET https://myinstants-api.vercel.app/favorites?username=hellmouz
+```
+
+### Example 8: Paginate Any List (e.g. Trending Syria, Page 4)
+
+Mirrors https://www.myinstants.com/en/index/sy/?page=4 — page 1 is the default and returns the same shape as before:
+
+```http
+GET https://myinstants-api.vercel.app/trending?q=sy&page=4
+GET https://myinstants-api.vercel.app/search?q=laugh&page=2
+GET https://myinstants-api.vercel.app/recent?page=2
+```
+
+### Example 9: Only 2–6 Second Sounds
+
+```http
+GET https://myinstants-api.vercel.app/search?q=laugh&min_duration=2&max_duration=6
+GET https://myinstants-api.vercel.app/trending?q=sy&page=4&min_duration=2&max_duration=6
+GET https://myinstants-api.vercel.app/search?q=laugh&with_duration=1
 ```
 
 ## 🌱 Contributing
