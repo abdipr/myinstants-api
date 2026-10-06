@@ -2,8 +2,14 @@
 header("Content-Type: application/json");
 require "helper.php";
 
-$html = fetch_html("https://www.myinstants.com/en/recent");
+$page = get_page_param();
+list($with_duration, $min_duration, $max_duration) = get_duration_params();
+
+$html = fetch_html(append_page_param("https://www.myinstants.com/en/recent", $page));
 if (!$html) output_error("Page not found");
 
-output_json(parse_sounds($html));
+$sounds = parse_sounds($html);
+$total_pages = parse_total_pages($html);
+$sounds = apply_duration_filter($sounds, $with_duration, $min_duration, $max_duration);
+output_json($sounds, "200", pagination_meta($page, $total_pages, count($sounds)));
 ?>
