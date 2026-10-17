@@ -69,7 +69,9 @@
 
 ### Endpoints
 
-Base URL: https://myinstants-api.vercel.app
+Base URL: https://myinstants-api.page.gd
+
+_Currently hosted on InfinityFree instead of Vercel because it exceeds free tier limits._
 
 | Request          | Response                 | Parameter  |
 | :--------------- | :----------------------- | :--------: |
@@ -144,25 +146,25 @@ All errors return JSON objects with an appropriate HTTP status code (e.g., 404, 
 ### Example 1: Get Trending Sounds by Region
 
 ```http
-GET https://myinstants-api.vercel.app/trending?q=id
+GET https://myinstants-api.page.gd/trending?q=id
 ```
 
 ### Example 2: Search Sounds by Query
 
 ```http
-GET https://myinstants-api.vercel.app/search?q=laugh
+GET https://myinstants-api.page.gd/search?q=laugh
 ```
 
 ### Example 3: Get Sound Details by ID
 
 ```http
-GET https://myinstants-api.vercel.app/detail?id=akh-26815
+GET https://myinstants-api.page.gd/detail?id=akh-26815
 ```
 
 ### Example 4: Get Recently Uploaded Sounds
 
 ```http
-GET https://myinstants-api.vercel.app/recent
+GET https://myinstants-api.page.gd/recent
 ```
 
 ### Example 5: Get Best of All Time Sounds
@@ -170,19 +172,19 @@ GET https://myinstants-api.vercel.app/recent
 Retrieve a list of the most popular sounds of all time based on a specified region:
 
 ```http
-GET https://myinstants-api.vercel.app/best?q=id
+GET https://myinstants-api.page.gd/best?q=id
 ```
 
 ### Example 6: Get User's Uploaded Sounds
 
 ```http
-GET https://myinstants-api.vercel.app/uploaded?username=hellmouz
+GET https://myinstants-api.page.gd/uploaded?username=hellmouz
 ```
 
 ### Example 7: Get User's Favorite Sounds
 
 ```http
-GET https://myinstants-api.vercel.app/favorites?username=hellmouz
+GET https://myinstants-api.page.gd/favorites?username=hellmouz
 ```
 
 ### Example 8: Paginate Any List (e.g. Trending Syria, Page 4)
@@ -190,17 +192,17 @@ GET https://myinstants-api.vercel.app/favorites?username=hellmouz
 Mirrors https://www.myinstants.com/en/index/sy/?page=4 — page 1 is the default and returns the same shape as before:
 
 ```http
-GET https://myinstants-api.vercel.app/trending?q=sy&page=4
-GET https://myinstants-api.vercel.app/search?q=laugh&page=2
-GET https://myinstants-api.vercel.app/recent?page=2
+GET https://myinstants-api.page.gd/trending?q=sy&page=4
+GET https://myinstants-api.page.gd/search?q=laugh&page=2
+GET https://myinstants-api.page.gd/recent?page=2
 ```
 
 ### Example 9: Only 2–6 Second Sounds
 
 ```http
-GET https://myinstants-api.vercel.app/search?q=laugh&min_duration=2&max_duration=6
-GET https://myinstants-api.vercel.app/trending?q=sy&page=4&min_duration=2&max_duration=6
-GET https://myinstants-api.vercel.app/search?q=laugh&with_duration=1
+GET https://myinstants-api.page.gd/search?q=laugh&min_duration=2&max_duration=6
+GET https://myinstants-api.page.gd/trending?q=sy&page=4&min_duration=2&max_duration=6
+GET https://myinstants-api.page.gd/search?q=laugh&with_duration=1
 ```
 
 ## 🌱 Contributing

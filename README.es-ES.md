@@ -71,7 +71,9 @@
 
 ### Endpoints
 
-URL Base: https://myinstants-api.vercel.app
+URL Base: https://myinstants-api.page.gd
+
+_Alojado actualmente en InfinityFree en lugar de Vercel por superar los límites del plan gratuito._
 
 | Petición          | Respuesta                 | Parámetro  |
 | :--------------- | :----------------------- | :--------: |
@@ -146,25 +148,25 @@ Todos los errores devuelven objetos JSON con un código de estado HTTP apropiado
 ### Ejemplo 1: Obtener sonidos en tendencia por región
 
 ```http
-GET https://myinstants-api.vercel.app/trending?q=id
+GET https://myinstants-api.page.gd/trending?q=id
 ```
 
 ### Ejemplo 2: Buscar sonidos por consulta
 
 ```http
-GET https://myinstants-api.vercel.app/search?q=laugh
+GET https://myinstants-api.page.gd/search?q=laugh
 ```
 
 ### Ejemplo 3: Obtener detalles de un sonido por ID
 
 ```http
-GET https://myinstants-api.vercel.app/detail?id=akh-26815
+GET https://myinstants-api.page.gd/detail?id=akh-26815
 ```
 
 ### Ejemplo 4: Obtener sonidos subidos recientemente
 
 ```http
-GET https://myinstants-api.vercel.app/recent
+GET https://myinstants-api.page.gd/recent
 ```
 
 ### Ejemplo 5: Obtener los mejores sonidos de todos los tiempos
@@ -172,19 +174,19 @@ GET https://myinstants-api.vercel.app/recent
 Obtén una lista de los sonidos más populares de todos los tiempos basada en una región especificada:
 
 ```http
-GET https://myinstants-api.vercel.app/best?q=id
+GET https://myinstants-api.page.gd/best?q=id
 ```
 
 ### Ejemplo 6: Obtener sonidos subidos por un usuario
 
 ```http
-GET https://myinstants-api.vercel.app/uploaded?username=hellmouz
+GET https://myinstants-api.page.gd/uploaded?username=hellmouz
 ```
 
 ### Ejemplo 7: Obtener sonidos favoritos de un usuario
 
 ```http
-GET https://myinstants-api.vercel.app/favorites?username=hellmouz
+GET https://myinstants-api.page.gd/favorites?username=hellmouz
 ```
 
 ### Ejemplo 8: Paginar cualquier lista (p. ej. tendencias Siria, página 4)
@@ -192,17 +194,17 @@ GET https://myinstants-api.vercel.app/favorites?username=hellmouz
 Refleja https://www.myinstants.com/en/index/sy/?page=4 — la página 1 es el valor por defecto:
 
 ```http
-GET https://myinstants-api.vercel.app/trending?q=sy&page=4
-GET https://myinstants-api.vercel.app/search?q=laugh&page=2
-GET https://myinstants-api.vercel.app/recent?page=2
+GET https://myinstants-api.page.gd/trending?q=sy&page=4
+GET https://myinstants-api.page.gd/search?q=laugh&page=2
+GET https://myinstants-api.page.gd/recent?page=2
 ```
 
 ### Ejemplo 9: Solo sonidos de 2–6 segundos
 
 ```http
-GET https://myinstants-api.vercel.app/search?q=laugh&min_duration=2&max_duration=6
-GET https://myinstants-api.vercel.app/trending?q=sy&page=4&min_duration=2&max_duration=6
-GET https://myinstants-api.vercel.app/search?q=laugh&with_duration=1
+GET https://myinstants-api.page.gd/search?q=laugh&min_duration=2&max_duration=6
+GET https://myinstants-api.page.gd/trending?q=sy&page=4&min_duration=2&max_duration=6
+GET https://myinstants-api.page.gd/search?q=laugh&with_duration=1
 ```
 
 ## 🌱 Contribuir
